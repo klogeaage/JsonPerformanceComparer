@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JourneyDoc.Models</name>
+    </assembly>
+    <members>
+        <member name="T:JourneyDoc.Models.Account">
+            <summary>
+            For historic reasons, this is still called an account.
+            In the user interface, it is known as a Workspace.
+            It connects users and journeys for a specific purpose.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Account.OwnerId">
+            <summary>
+            The Id of the user that is the owner of the workspace.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Account.Owner">
+            <summary>
+            Owner of the workspace, i.e. responsible for it and its users.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Account.HasOwnerPermissions(System.String)">
+            <summary>
+            Does user with id userId have owner priviligies in the workspace?  
+            </summary>
+            <param name="userId">Id of user in question</param>
+            <returns></returns>
+        </member>
+        <member name="P:JourneyDoc.Models.Account.GeneralDescription">
+            <summary>
+            Name and description
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Account.Users">
+            <summary>
+            List of all users (including owner)
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Account.IsDemo">
+            <summary>
+            Is this a demo/sample workspace
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Account.ToString">
+            <summary>
+            To make it easier to use in views.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyDoc.Models.Dto.TagListDto">
+            <summary>
+            Tags are much faster and simpler to handle separately from the Journey.
+            Id is the Journeys ID.
+            
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Dto.TagListDto.#ctor">
+            <summary>
+            Serialization requires this
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Dto.TagListDto.#ctor(JourneyDoc.Models.Journey)">
+            <summary>
+            Convenience constructor to create from Journey.
+            </summary>
+            <param name="journey"></param>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.TagListDto.TagList">
+            <summary>
+            List of tags from Journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.TagListDto.AccountId">
+            <summary>
+            Need this as well
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.Dto.UserAccountDto">
+            <summary>
+            Combination of user and account information
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.UserAccountDto.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.UserAccountDto.Accounts">
+            <summary>
+            The user's account
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.Dto.UserSettingsDto">
+            <summary>
+            Various settings for the user that we want to update separately
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.UserSettingsDto.UserSettings">
+            <summary>
+            Enum flags with various user settings.
+            Passed as int here to get Swagger right.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.UserSettingsDto.CurrentWorkspaceId">
+            <summary>
+            The current workspace is the one loaded after signin.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Dto.UserSettingsDto.CurrentJourneyId">
+            <summary>
+            The current journey, i.e. last opened.
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.TagTypes">
+            <summary>
+            Tags defined by system
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.TagTypes.Phase">
+            <summary>
+            Tags designating phases
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.TagTypes.Step">
+            <summary>
+            Tags for steps (not currently used)
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.TagTypes.UserDefined">
+            <summary>
+            A user defined tag will have this type
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.ImageResolution">
+            <summary>
+            The resolution of imported images.
+            Should match the media plugins similar definition (PhotoSize).
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.ImageResolution.Small">
+            <summary>
+            25% of size, may be good enough in many cases?
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.ImageResolution.Medium">
+            <summary>
+            50% of size. This is the default
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.ImageResolution.Large">
+            <summary>
+            75% of size
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.ImageResolution.Full">
+            <summary>
+            Full size. 
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.UserTypes">
+            <summary>
+            Type of user
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.UserTypes.Guest">
+            <summary>
+            Used to denote a user is a guest in this account
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.UserTypes.Member">
+            <summary>
+            Regular user
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.UserTypes.CoOwner">
+            <summary>
+            Co-owner (administrator) of account, i.e. has same privileges as owner.
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.UserSettings">
+            <summary>
+            Controls various user settings
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.UserSettings.ShowDemoWorkspaces">
+            <summary>
+            Should list of workspaces include demo workspaces?
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.UserSettings.StorePhotosInUserSpace">
+            <summary>
+            Should we also store photos taken with JourneyDoc in the user's own photos?
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.GeneralDescription">
+            <summary>
+            Misc. entities in the system will have the need for descriptions. This value object encapsulates that.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.GeneralDescription.Name">
+            <summary>
+            Name of item
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.GeneralDescription.Description">
+            <summary>
+            A description
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.GeneralDescription.Comments">
+            <summary>
+            Comments given at start
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.Interfaces.IEntityInTable`1">
+            <summary>
+            Stuff we need in an entity to be able to save it in Azure table storage
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IEntityInTable`1.ETag">
+            <summary>
+            The ETag to keep track of versions and updates
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IEntityInTable`1.LastUpdated">
+            <summary>
+            Date when last update took place. May be caused by system operations
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IEntityInTable`1.IsDeleted">
+            <summary>
+            Keep track of soft delete status
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IEntityInTable`1.Id">
+            <summary>
+            Used for row key
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.Interfaces.IFilterableItem">
+            <summary>
+            Any object implementing this can be filtered by our generic SearchHandler.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Interfaces.IFilterableItem.ValueToFilterOn">
+            <summary>
+            Supporting filtering on data returned by this
+            </summary>
+            <returns>All text to filter on in lower case.</returns>
+        </member>
+        <member name="T:JourneyDoc.Models.Interfaces.IPresentableItem">
+            <summary>
+            If an item should be supported in presentation mode, it must implement this.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.GeneralDescription">
+            <summary>
+            General description
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.PresentationText">
+            <summary>
+            Text used in presentation mode if present.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.Start">
+            <summary>
+            Start date for journey, phase or point
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.ImagePath">
+            <summary>
+            Image path
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.SoundPath">
+            <summary>
+            Sound path
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.VideoPath">
+            <summary>
+            Video path
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.GroupName">
+            <summary>
+            The group name, if any
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.IncludeInPresentation">
+            <summary>
+            Should this be shown as a separate slide in presentation mode?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Interfaces.IPresentableItem.HasPresentationText">
+            <summary>
+            True if a description or presentation text exist.
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.ItemBase`1">
+            <summary>
+            Base class for all entity types 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:JourneyDoc.Models.ItemBase`1.Id">
+            <summary>
+            The Id of an item
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.ItemBase`1.ETag">
+            <summary>
+            The Etag from table storage to keep track of updates.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.ItemBase`1.LastUpdated">
+            <summary>
+            Date when last update took place. May be caused by system operations
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.ItemBase`1.IsDeleted">
+            <summary>
+            Keep track of soft delete status
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.ItemBase`1.PostClientSerializationAsync(System.Object)">
+            <summary>
+            Implement this if you want things to happen on the client after object is received from server.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.ItemBase`1.PreClientSerialization">
+            <summary>
+            Implement this if you want things to happen before serializing and sending it to server
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.Journey">
+            <summary>
+            Data about a journey instance.
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.Journey.GetTemplateFromIdAsync">
+            <summary>
+            Supply a method to convert a JourneyTemplateId to the corresponding JourneyTemplate
+            </summary>
+        </member>
+        <member name="F:JourneyDoc.Models.Journey.GetOwnerFromId">
+            <summary>
+            Supply a method to populate Owner from OwnerId
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.GeneralDescription">
+            <summary>
+            Name and description of this journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.JourneyTemplate">
+            <summary>
+            The template it was based on
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.JourneyTemplateId">
+            <summary>
+            Id of journey template
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Points">
+            <summary>
+            All the points of the journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Owner">
+            <summary>
+            User responsible for the journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.OwnerId">
+            <summary>
+            User id of user responsible for the journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Observers">
+            <summary>
+            The observers of the journey. Not participating, but observing
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Travelers">
+            <summary>
+            The actual travelers
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.TagList">
+            <summary>
+            The list of all tags that may be attached to the points of this journey
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.HasPresentationText">
+            <summary>
+            True if a description or presentation text exist.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.IsLocationTrackingEnabled">
+            <summary>
+            Is location tracking enabled for this journey.
+            Currently inherited from template, but this may change in the future.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Start">
+            <summary>
+            When did journey start?
+            Returns oldest point (if any).
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.Duration">
+            <summary>
+            What is the duration of the journey from start to end?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.AccountId">
+            <summary>
+            Account this journey belongs to. Could also have been found via Owner,
+            but since that is only available on front-end and we need it on back-end,
+            this is so much easier.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.PresentationText">
+            <summary>
+            Text used in presentation mode
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.ImagePath">
+            <summary>
+            Path to image. 
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.SoundPath">
+            <summary>
+            Path to sound. Currently not used.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.VideoPath">
+            <summary>
+            Path to video. Currently not used.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.IncludeInPresentation">
+            <summary>
+            Flag controling whether item is included in presentation or not.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Journey.GroupName">
+            <summary>
+            The group name in presentation mode.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.AddTag(JourneyDoc.Models.Tag,System.Int32)">
+            <summary>
+            Add a new tag at position specified by its SortIndex and automatically allocating an Id
+            </summary>
+            <param name="tag"></param>
+            <param name="sortIndex">Where should tag be added, -1 means at end.</param>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.TagBuilder(System.String,JourneyDoc.Models.TagTypes,System.Int32)">
+            <summary>
+            Build tag, either by getting it from existing list or adding/inserting a new tag to the list and returning that
+            </summary>
+            <param name="name">Name of new or existing tag</param>
+            <param name="tagType">Type of tag</param>
+            <param name="sortIndex">Sortindex, if 0 append at end.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.PostClientSerializationAsync(System.Object)">
+            <summary>
+            We need to fix up tags and template information on load.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.SetJourneyTemplate(JourneyDoc.Models.JourneyTemplate)">
+            <summary>
+            We need this to keep the JourneyTemplate property private so 
+            it is not serialized into JSON.
+            </summary>
+            <param name="journeyTemplate"></param>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.FilterAndGroupByTagType(JourneyDoc.Models.TagTypes)">
+            <summary>
+            Get list of journey points filtered and grouped by specified tagtype.
+            </summary>
+            <param name="tagTypesEnum">The tag type to filter on.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.GetPresentableItems">
+            <summary>
+            Get the list of presentable items, respecting the IncludeInPresentation flag and sorting
+            by phase and then Start.
+            </summary>
+            <returns>The list</returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.GetTagsByType(JourneyDoc.Models.TagTypes)">
+            <summary>
+            Get distinct list of all tags with specified type.
+            </summary>
+            <param name="tagTypesEnum"></param>
+            <returns>Sorted list of tags.</returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.FindTag(System.String)">
+            <summary>
+            Find a tag on its name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.ValueToFilterOn">
+            <summary>
+            Supporting filtering on data returned by this
+            </summary>
+            <returns>All text to filter on in lower case.</returns>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.SetOwner(JourneyDoc.Models.User)">
+            <summary>
+            To make Owner not serialize when being sent from backend, at least, it must be private. 
+            So set via this.
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:JourneyDoc.Models.Journey.ToString">
+            <summary>
+            Convenient to show in default list representation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyDoc.Models.GroupedPointItem">
+            <summary>
+            Result when grouping points according to phase or other tag
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.GroupedPointItem.Tag">
+            <summary>
+            The tag we grouped on
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.GroupedPointItem.Points">
+            <summary>
+            The list of points with that tag
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.JourneyPoint">
+            <summary>
+            Represents a single point
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.GeneralDescription">
+            <summary>
+            General description of point
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.ImagePath">
+            <summary>
+            Path to image
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.ImagePathLow">
+            <summary>
+            Low resolution version of image.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.ImageId">
+            <summary>
+            Id of image file
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.SoundPath">
+            <summary>
+            Path to sound file
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.SoundId">
+            <summary>
+            Id of sound file
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.VideoPath">
+            <summary>
+            Path to Video
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.VideoId">
+            <summary>
+            Id of video file
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.GpsLocation">
+            <summary>
+            Data about where a point was recorded. 
+            If image is specified, data from this overrides the value given by device.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.Insights">
+            <summary>
+            Description of insights
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.PresentationText">
+            <summary>
+            Text used for presentation
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.Observations">
+            <summary>
+            Description of observations - is this still relevant?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.Phase">
+            <summary>
+            Get the phase tag
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.Tags">
+            <summary>
+            List of tags. Built from TagIds on demand.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.TagIds">
+            <summary>
+            List of tag ids, i.e. references to the owner journey TagList items.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.Start">
+            <summary>
+            When was the point started
+            </summary>
+            
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.JourneyId">
+            <summary>
+            Which journey does this belong to?
+            Only available during transmission to server
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.AccountId">
+            <summary>
+            Which account?
+            Only available during transmission to server.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.IncludeInPresentation">
+            <summary>
+            Flag controling whether item is included in presentation or not.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.IsInCloud">
+            <summary>
+            Has all data been safely stored in cloud?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.ShowLocation">
+            <summary>
+            Should we show location info?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.TrackLocation">
+            <summary>
+            Is location tracking enabled?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.HasGpsLocation">
+            <summary>
+            Do we have a GPS location that can be used for maps?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.HasPresentationText">
+            <summary>
+            True if a description or presentation text exist.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyPoint.GroupName">
+            <summary>
+            The group name in presentation mode.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.AddTag(JourneyDoc.Models.Tag)">
+            <summary>
+            Add a tag
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.RemoveTag(JourneyDoc.Models.Tag)">
+            <summary>
+            Remove a tag
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.FindTag(System.String)">
+            <summary>
+            Find a tag based on name
+            </summary>
+            <param name="name"></param>
+            <returns>Tag or null if not found.</returns>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.BuildTagsFromIds(System.Collections.Generic.IList{JourneyDoc.Models.Tag})">
+            <summary>
+            Build the list of tags from the ids and the owner's tag list.
+            </summary>
+            <param name="ownerTagList"></param>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.ValueToFilterOn">
+            <summary>
+            Supporting filtering on data returned by this
+            </summary>
+            <returns>All text to filter on in lower case.</returns>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.GetIdFromPath(System.String)">
+            <summary>
+            Return the Id of a blob by its path.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyDoc.Models.JourneyPoint.PostClientSerializationAsync(System.Object)">
+            <summary>
+            Fix up references to owner journey and account
+            </summary>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyDoc.Models.JourneyTemplate">
+            <summary>
+            Information used to classify and create a journey from.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.GeneralDescription">
+            <summary>
+            General description. Used to inform the user about what the journeys based on this are about.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.Owner">
+            <summary>
+            User responsible for the this
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.OwnerId">
+            <summary>
+            Id of user responsible for this?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.Tags">
+            <summary>
+            List of tags. Built from TagIds on demand.
+            Not transmitted in JSON and should eventually be ignored
+            (not possible right now, but when all targets are .NET Core 3.0, it might).
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.ImageResolution">
+            <summary>
+            How high a resolution should images imported in to journeys based on this template have?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.JourneyTemplate.IsLocationTrackingEnabled">
+            <summary>
+            Should we track GPS location for points added to journeys based on this template?
+            </summary>
+        </member>
+        <member name="T:JourneyDoc.Models.LocationData">
+            <summary>
+            Data describing physical location
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.Latitude">
+            <summary>
+            GPS latitude
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.Longitude">
+            <summary>
+            GPS longitude
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.AdminArea">
+            <summary>
+            Admin area, like region or state
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.CountryName">
+            <summary>
+            Full name of country
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.CountryCode">
+            <summary>
+            ISO country code, e.g. DK
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.FeatureName">
+            <summary>
+            Best guess at an street name and number
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.Locality">
+            <summary>
+            Best guess at a city
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.PostalCode">
+            <summary>
+            Postal (Zip) code
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.SubAdminArea">
+            <summary>
+            Sub admin area, like Bari or Nordsjælland
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.SubLocality">
+            <summary>
+            Sub locality, often not set.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.LocationData.Address">
+            <summary>
+            Get a rather crudely formatted address. 
+            Should be enhanced to take country code into account.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyDoc.Models.Tag">
+            <summary>
+            Tags can be linked to various entities in the system.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.GeneralDescription">
+            <summary>
+            Name and title
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.SortIndex">
+            <summary>
+            Used for sorting. Phases especially should be sorted according to this.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.Type">
+            <summary>
+            Type of tag.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.PresentationText">
+            <summary>
+            Text used in presentation mode
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.ImagePath">
+            <summary>
+            Not currently used
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.SoundPath">
+            <summary>
+            Path to sound. Currently not used.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.VideoPath">
+            <summary>
+            Not currently used
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.IncludeInPresentation">
+            <summary>
+            Should phase be included in presentation
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.Start">
+            <summary>
+            Not yet implemented
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.GroupName">
+            <summary>
+            The group name in presentation mode.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.Tag.HasPresentationText">
+            <summary>
+            True if a description or presentation text exist.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.Tag.ToString">
+            <summary>
+            Convenient for display in lists
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyDoc.Models.User">
+            <summary>
+            Details about a user. All users belong to at least one account.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Name">
+            <summary>
+            Full name
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Email">
+            <summary>
+            Email address. Also used to identify user during invitation phase.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.MobilePhoneNumber">
+            <summary>
+            Mobile phone
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Notes">
+            <summary>
+            Misc. notes about the user
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.UserType">
+            <summary>
+            Type of user
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.UserSettings">
+            <summary>
+            Enum flags with various user settings
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.IsAdmin">
+            <summary>
+            Is the user an admin user with rights to templates and demo workspaces?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.IsDisabled">
+            <summary>
+            Is the user active or disabled in the system.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.AccountIds">
+            <summary>
+            All accounts the user is found in.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Oid">
+            <summary>
+            The internal Object Id in Azure AD
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.HasAuthenticated">
+            <summary>
+            Has the user been authenticated?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Platforms">
+            <summary>
+            List of platforms, i.e. Android, iOS, etc. the user has been using.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.Devices">
+            <summary>
+            List of devices the user has been using.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.LastSignIn">
+            <summary>
+            When has user last signed in?
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.CurrentWorkspaceId">
+            <summary>
+            The current workspace is the one loaded after signin.
+            </summary>
+        </member>
+        <member name="P:JourneyDoc.Models.User.CurrentJourneyId">
+            <summary>
+            The current journey, i.e. last opened.
+            </summary>
+        </member>
+        <member name="M:JourneyDoc.Models.User.ToString">
+            <summary>
+            For simple display in a list
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

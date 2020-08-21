@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JourneyDoc.Models.Journey">
+    <Position X="6.75" Y="3.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="JourneyTemplate" Type="JourneyDoc.Models.JourneyTemplate" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.875" Y="3.25" />
+        <Point X="6.875" Y="2.875" />
+        <Point X="5.531" Y="2.875" />
+        <Point X="5.531" Y="2.31" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgAAICJACEKhAMAEgRCgIAQFABABEEBIAAAAAAASEE=</HashCode>
+      <FileName>Journey.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GeneralDescription" />
+      <Property Name="JourneyTemplate" />
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Points" />
+      <Property Name="Observers" />
+      <Property Name="Travelers" />
+      <Property Name="TagList" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.JourneyTemplate">
+    <Position X="3.5" Y="0.5" Width="2.25" />
+    <AssociationLine Name="Owner" Type="JourneyDoc.Models.User" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="1.405" />
+        <Point X="3.25" Y="1.405" />
+        <Point X="3.25" Y="2.56" />
+        <Point X="4.312" Y="2.56" />
+        <Point X="4.312" Y="3.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Tags" Type="JourneyDoc.Models.Tag" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="1.573" />
+        <Point X="7" Y="1.573" />
+        <Point X="7" Y="2.627" />
+        <Point X="8.073" Y="2.627" Type="JumpStart" />
+        <Point X="8.24" Y="2.627" Type="JumpEnd" />
+        <Point X="10.292" Y="2.627" Type="JumpStart" />
+        <Point X="10.458" Y="2.627" Type="JumpEnd" />
+        <Point X="11.625" Y="2.627" />
+        <Point X="11.625" Y="4.5" />
+        <Point X="12" Y="4.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="0.225" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAACIAAAAAAAAEAAAAAAAAIAABEAAAAAAAAAAAAA=</HashCode>
+      <FileName>JourneyTemplate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GeneralDescription" />
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tags" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.User">
+    <Position X="3.5" Y="3.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACwIAACACAAAAAEUAAAAAQAAAAACAFAAEAAAAEACAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.GeneralDescription">
+    <Position X="7.25" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAgAAAEAAAAAAQAAAAAAAAAAAAQAAAAIAA=</HashCode>
+      <FileName>GeneralDescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JourneyDoc.Models.JourneyPoint">
+    <Position X="9.5" Y="3.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="GeneralDescription" Type="JourneyDoc.Models.GeneralDescription" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.375" Y="3.25" />
+        <Point X="10.375" Y="1.312" />
+        <Point X="9.5" Y="1.312" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AggAAAQJACEIgAECYhAQgIAoAIBAFEEBKSBYAAAARAE=</HashCode>
+      <FileName>JourneyPoint.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GeneralDescription" />
+      <Property Name="GpsLocation" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tags" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.Account">
+    <Position X="5" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Owner" Type="JourneyDoc.Models.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="7.25" />
+        <Point X="5.75" Y="5.375" />
+        <Point X="5.25" Y="5.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAICCIACAAAAAEEBAAAAQAAAAAAAACAAAAIEAAABE=</HashCode>
+      <FileName>Account.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.Tag">
+    <Position X="12" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAACEAAAAEAAAAgJQAAABABAAAIQAAAAAAQAE=</HashCode>
+      <FileName>Tag.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JourneyDoc.Models.LocationData">
+    <Position X="12.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAAEAAAAACIgAIAAAAgAAAACACAAACAAAAAAA=</HashCode>
+      <FileName>LocationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="JourneyDoc.Models.UserTypes">
+    <Position X="3.5" Y="7.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAACEA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="JourneyDoc.Models.TagTypes">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAABAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="JsonPerformanceComparer.MainPage"
+    xmlns:viewModels="clr-namespace:JsonPerformanceComparer.ViewModels"
+    x:DataType="viewModels:MeasureViewModel" >
+    <StackLayout >
+        <Frame BackgroundColor="#2196F3" Padding="0,20,0,20" CornerRadius="0">
+            <Label Text="Welcome to JSON Performance comparer" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="This App compares deserialization performance between Newtonsoft and System.Text.Json." FontSize="Medium" Margin="10"  />
+        <Button Text="Start measuring" Command="{Binding MeasureCommand}" BackgroundColor="Aqua" />
+        <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="Auto, Auto, Auto, Auto" Padding="0, 20, 30, 30">
+            <Label Grid.Row="0" Grid.Column="0" Text="Newtonsoft" HorizontalOptions="End" FontSize="Body" FontAttributes="Bold" />
+            <Label Grid.Row="0" Grid.Column="1" Text="System.Text.Json" HorizontalOptions="End" FontSize="Body" FontAttributes="Bold"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="{Binding NewtonsoftResult, StringFormat='{0:0.0} ms'}" HorizontalOptions="End"  />
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding SystemTextJsonResult, StringFormat='{0:0.0} ms'}" HorizontalOptions="End" />
+            <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding DeltaPercent, Converter={StaticResource DeltaPercentConverter} }" 
+                TextColor="{Binding ResultColor}" HorizontalOptions="Center" IsVisible="{Binding DeltaPercent, Converter={StaticResource NullOrEmptyBoolConverter}}" 
+                FontSize="Medium"  />
+            <Label Grid.Row="3" Grid.ColumnSpan="2" 
+                IsVisible="{Binding IsFirstRun}" HorizontalOptions="Center" HorizontalTextAlignment="Center" >
+                <Label.FormattedText>
+This is first run. 
+Newtonsoft spends time initializing, so don't think too much of this result.
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </StackLayout>
+</ContentPage>
